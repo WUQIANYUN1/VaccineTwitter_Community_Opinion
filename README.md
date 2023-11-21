@@ -8,7 +8,7 @@ It consists of the following 5 parts:
 2) Vaccine opinion classifier (Python)
 3) Dynamic community detection (Python and Linux)*
 4) Trace individual's opinion and community changes (Python and Linux)
-5) Plot Figures in the paper (Python)
-* We used Louvain method package for detecting communities. Please refer to this repository for details: https://github.com/riyadparvez/louvain-method/tree/master
+   We used louvain method package developed by Riyad Parvez for detecting communities: https://github.com/riyadparvez/louvain-method/tree/master
+6) Plot Figures in the paper (Python)
 
 If any questions, please email to wuqianyun.maggie@gmail.com.
