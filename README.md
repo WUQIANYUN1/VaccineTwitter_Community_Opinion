@@ -6,8 +6,9 @@ Authors: Qianyun Wu, Yukie Sano, Hideki Takayasu, Shlomo Havlin, Misako Takayasu
 It consists of the following 5 parts:
 1) Parse tweets and retweets using Twitter API (Python)
 2) Vaccine opinion classifier (Python)
-3) Dynamic community detection (Python and Linux)
+3) Dynamic community detection (Python and Linux)*
 4) Trace individual's opinion and community changes (Python and Linux)
 5) Plot Figures in the paper (Python)
+* We used Louvain method package for detecting communities. Please refer to this repository for details: https://github.com/riyadparvez/louvain-method/tree/master
 
 If any questions, please email to wuqianyun.maggie@gmail.com.
