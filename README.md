@@ -11,6 +11,7 @@ The codes consist of the following 5 parts:
 
    *We used louvain method package developed by Riyad Parvez for detecting communities: https://github.com/riyadparvez/louvain-method/tree/master
 4) Trace individual's opinion and community changes (Python and Linux)
+5) Demo
 
 If any questions, please email wuqianyun.maggie@gmail.com.
 
