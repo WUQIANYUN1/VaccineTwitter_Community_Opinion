@@ -175,27 +175,33 @@ def n_gram(txt,n):
     n_g=list(set(list(n_g)))
     return n_g
 
+def main():
+    
+    # load hottolink database
+    model_hottolink = KeyedVectors.load_word2vec_format(file_w2v_hottolink, binary=False)
+    
+    # load sample data:
+    sample_data=pd.read_csv("add path")
+    w2v_mat=[]
+    for s in range(len(sample_data)):
+        print(s,end='\r')
+        txt=sample_data.iloc[s,"???"]
+        w2v,word_lst=find_SVM(txt)
+        if len(word_lst)>0:
+            #print(word_lst)
+            #tfidf=find_tdidf(word_lst)
+            w2v_v=np.sum(w2v,axis=0)
+            ind=list(sample_data.index)[s]
+            if s==0:
+                w2v_mat=np.asarray(list(w2v_v))
+            else:
+                w2v_mat=np.vstack((w2v_mat,w2v_v))
+            sample_data.loc[ind,'1-gram']=','.join(n_gram(txt,1))
+            sample_data.loc[ind,'2-gram']=','.join(n_gram(txt,2))
+            sample_data.loc[ind,'3-gram']=','.join(n_gram(txt,3))
+            sample_data.loc[ind,'hashtags']=','.join(get_hash(txt))
+            
+    sample_data.loc[:,'w2v_nor']=[','.join([str(round(ii,2)) for ii in i]) for i in (w2v_mat-np.average(w2v_mat,axis=0))/np.std(w2v_mat,axis=0)]
 
-# load sample data:
-
-sample_data=pd.read_csv("add path")
-w2v_mat=[]
-for s in range(len(sample_data)):
-    print(s,end='\r')
-    txt=sample_data.iloc[s,"???"]
-    w2v,word_lst=find_SVM(txt)
-    if len(word_lst)>0:
-        #print(word_lst)
-        #tfidf=find_tdidf(word_lst)
-        w2v_v=np.sum(w2v,axis=0)
-        ind=list(sample_data.index)[s]
-        if s==0:
-            w2v_mat=np.asarray(list(w2v_v))
-        else:
-            w2v_mat=np.vstack((w2v_mat,w2v_v))
-        sample_data.loc[ind,'1-gram']=','.join(n_gram(txt,1))
-        sample_data.loc[ind,'2-gram']=','.join(n_gram(txt,2))
-        sample_data.loc[ind,'3-gram']=','.join(n_gram(txt,3))
-        sample_data.loc[ind,'hashtags']=','.join(get_hash(txt))
-        
-sample_data.loc[:,'w2v_nor']=[','.join([str(round(ii,2)) for ii in i]) for i in (w2v_mat-np.average(w2v_mat,axis=0))/np.std(w2v_mat,axis=0)]
+if __name__ == "__main__":
+    main()
