@@ -1,4 +1,4 @@
-## This file processes raw text data to extract w2v features and dictionary features to make a tweet vector used for inputting into SVM classifier.
+## This file processes raw text data to extract w2v features and dictionary features to make a tweet vector aused for inputting into SVM classifier.
 
 import time
 import json
